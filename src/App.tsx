@@ -126,6 +126,8 @@ const PROJECTS: Project[] = [
     github: GITHUB,
     demo: "https://example.com",
     visual: "topsignal",
+    logoSrc: "/topsignal_logo.png",
+    logoAlt: "TopSignal logo",
   },
   {
     name: "NextStepAI",
@@ -510,6 +512,21 @@ function ProjectVisual({
   logoSrc?: string;
   logoAlt?: string;
 }): JSX.Element {
+  if (logoSrc) {
+    return (
+      <div className="mx-auto w-full max-w-[551px] overflow-hidden rounded-xl border border-soft bg-[rgba(10,16,28,0.35)]">
+        <div className="aspect-[551/221] w-full">
+          <img
+            src={logoSrc}
+            alt={logoAlt ?? "Project logo"}
+            className="h-full w-full object-contain"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    );
+  }
+
   if (variant === "topsignal") {
     const bars = [24, 38, 27, 42, 30, 49, 34, 44, 37, 40];
     return (
@@ -548,21 +565,6 @@ function ProjectVisual({
             );
           })}
         </svg>
-      </div>
-    );
-  }
-
-  if (logoSrc) {
-    return (
-      <div className="mx-auto w-full max-w-[551px] overflow-hidden rounded-xl border border-soft bg-[rgba(10,16,28,0.35)]">
-        <div className="aspect-[551/221] w-full">
-          <img
-            src={logoSrc}
-            alt={logoAlt ?? "Project logo"}
-            className="h-full w-full object-contain"
-            loading="lazy"
-          />
-        </div>
       </div>
     );
   }
